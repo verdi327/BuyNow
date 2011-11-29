@@ -1,0 +1,29 @@
+<h1>My Cart</h1>
+
+<hr>
+
+<h1>Items for Sale</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.name %></td>
+    <td><%= number_to_currency(item.price, precision: 0) %></td>
+    <!-- <td><%= link_to 'Show', item %></td>
+       <td><%= link_to 'Edit', edit_item_path(item) %></td>
+       <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td> -->
+    <td><%= link_to 'Add To Cart', add_to_cart_url(item.id), :method => "post" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>
