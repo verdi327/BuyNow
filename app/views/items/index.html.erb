@@ -1,5 +1,11 @@
 <h1>My Cart</h1>
 
+<% @cart_items.each do |cart_item| %>
+<li><%= cart_item.item.name  %> <%= number_to_currency(cart_item.PurchasePrice, precision: 0) %> <%= link_to "Delete", delete_cart_item_url(cart_item), confirm: "Are you sure?", method: "delete" %> </li>
+<% end %>
+
+<%= @cart.total %>
+
 <hr>
 
 <h1>Items for Sale</h1>
@@ -19,7 +25,7 @@
     <!-- <td><%= link_to 'Show', item %></td>
        <td><%= link_to 'Edit', edit_item_path(item) %></td>
        <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td> -->
-    <td><%= link_to 'Add To Cart', add_to_cart_url(item.id), :method => "post" %></td>
+    <td><%= link_to 'Add To Cart', add_to_cart_url(zebra: item.id), method: "post" %></td>
   </tr>
 <% end %>
 </table>

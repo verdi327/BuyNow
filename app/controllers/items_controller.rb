@@ -1,8 +1,13 @@
 class ItemsController < ApplicationController
+  
+  before_filter :set_cart
+  
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
+    @cart_items = @cart.cart_items.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
