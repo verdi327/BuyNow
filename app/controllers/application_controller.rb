@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       @cart = Cart.find(session[:exist])
     else
       @cart = Cart.create
-      session[:exist] = @cart
+      session[:exist] = @cart.id
     end
   end
  
